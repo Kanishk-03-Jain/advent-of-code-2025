@@ -1,9 +1,12 @@
 #include<bits/stdc++.h>
+#include <chrono>
+
 using namespace std;
 
 #define ll long long
 
 int main() {
+    auto start = chrono::high_resolution_clock::now();
     ifstream inputFile("input.txt");
     string line;
     vector<vector<ll>> points;
@@ -49,4 +52,8 @@ int main() {
         }
     }
     cout << ans << endl;
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> elapsed = end - start;
+
+    cout << "Time taken: " << elapsed.count() << " seconds\n";
 }
