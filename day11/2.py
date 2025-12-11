@@ -1,5 +1,6 @@
 from collections import defaultdict
 from functools import cache
+import time
 
 adj = defaultdict(list)
 with open("input.txt") as file:
@@ -22,4 +23,8 @@ def dfs(curr, fft, dac):
             ans += dfs(child, fft, dac)
     return ans
 
+start = time.perf_counter()
 print(dfs("svr", False, False))
+end = time.perf_counter()
+
+print(f"Time taken: {end - start: 0.6f} seconds")

@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
+#include <chrono>
 using namespace std;
+
 long long dfs(map<string, vector<string>> &adj, string curr) {
     if (curr == "out") return 1;
     long long ans = 0;
@@ -10,6 +12,7 @@ long long dfs(map<string, vector<string>> &adj, string curr) {
 }
 
 int main() {
+    auto start = chrono::high_resolution_clock::now();
     map<string, vector<string>> adj;
     ifstream inputFile("input.txt");
     string line;
@@ -26,4 +29,7 @@ int main() {
         }
     }
     cout << dfs(adj, "you") << endl;
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> elapsed = end - start;
+    cout << "Time taken: " <<elapsed.count() << " seconds\n";
 }

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <chrono>
 using namespace std;
 
 map<tuple<string, bool, bool>, long long> memo;
@@ -25,6 +26,7 @@ long long dfs(map<string, vector<string>> &adj, string curr, bool fft, bool dac)
 }
 
 int main() {
+    auto start = chrono::high_resolution_clock::now();
     map<string, vector<string>> adj;
     ifstream inputFile("input.txt");
     string line;
@@ -41,4 +43,7 @@ int main() {
         }
     }
     cout << dfs(adj, "svr", false, false) << endl;
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> elapsed = end - start;
+    cout << "Time taken: " <<elapsed.count() << " seconds\n";
 }

@@ -1,4 +1,5 @@
 from collections import defaultdict
+import time
 
 adj = defaultdict(list)
 with open("input.txt") as file:
@@ -14,4 +15,8 @@ def dfs(curr):
     for child in adj[curr]:
         ans += dfs(child)
     return ans
+
+start = time.perf_counter()
 print(dfs("you"))
+end = time.perf_counter()
+print(f"Time taken: {end - start:.6f} seconds")
